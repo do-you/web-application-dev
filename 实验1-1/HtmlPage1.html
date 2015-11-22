@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function calculate() {
+            var count = 0;
+            var rows = document.getElementById("table1").rows;
+            for (var i = 1; i < rows.length; i++) {
+                count += parseInt(rows[i].cells[1].innerHTML);
+            }
+            document.getElementById("numout").innerHTML = count;
+        }
+    </script>
+</head>
+<body>
+    <div align="center">
+        <h1>Java程序员工资调查</h1>
+        <table id="table1" border="1" style="width: 250px">
+            <tr>
+                <th>月收入</th>
+                <th>人数</th>
+            </tr>
+            <tr>
+                <td>1000元</td>
+                <td>224</td>
+            </tr>
+            <tr>
+                <td>1000-3000元</td>
+                <td>1815</td>
+            </tr>
+            <tr>
+                <td>3001-5000元</td>
+                <td>1129</td>
+            </tr>
+            <tr>
+                <td>5001-10000元</td>
+                <td>652</td>
+            </tr>
+            <tr>
+                <td>10000元以上</td>
+                <td>83</td>
+            </tr>
+        </table>
+        <div style="width: 250px">
+            <input style="float: left" id="Button1" type="button" value="button" onclick="calculate()" />
+            <label id="numout" style="float: right; color: #FF0000;"></label>
+        </div>
+    </div>
+</body>
+</html>
+

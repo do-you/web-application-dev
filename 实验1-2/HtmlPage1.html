@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script type="text/javascript">
+        function selectcity(select) {
+            var city = document.getElementById("city");
+            switch (select.selectedIndex) {
+                case 1:
+                    city.length = 0;
+                    city.add(new Option("广西", "广西", false, false), null);
+                    city.add(new Option("江门", "江门", false, false), null);
+                    city.add(new Option("广州", "广州", false, false), null);
+                    break;
+                case 2:
+                    city.length = 0;
+                    city.add(new Option("武汉", "武汉", false, false), null);
+                    city.add(new Option("黄石", "黄石", false, false), null);
+                    city.add(new Option("黄冈", "黄冈", false, false), null);
+                    break;
+                case 3:
+                    city.length = 0;
+                    city.add(new Option("长沙", "长沙", false, false), null);
+                    city.add(new Option("株洲", "株洲", false, false), null);
+                    city.add(new Option("衡阳", "衡阳", false, false), null);
+                    break;
+            }
+
+        }
+        function inputtip(input, text) {
+            if (input.value == text) {
+                input.value = "";
+                input.style.color = "#000000";
+            }
+        }
+        function inputtip2(input, text) {
+            if (input.value.length == 0) {
+                input.value = text;
+                input.style.color = "#999";
+                input.style.fontStyle = "italic";
+            }
+        }
+        function isNumbers(e) {
+            if (e.target.value.length >= 11) {
+                return false;
+            }
+            else {
+                var keynum
+                var keychar
+                var numcheck
+                keynum = e.which
+                keychar = String.fromCharCode(keynum)
+                return !isNaN(keychar);
+            }
+        }
+        function flash() {
+            location.reload();
+        }
+        function commit() {
+            var out_string = "";
+            var inputs = document.getElementsByName("input");
+
+            out_string += "用户名:" + inputs[0].value;
+            out_string += "\n密码:" + inputs[1].value;
+            out_string += "\n确认密码:" + inputs[2].value;
+
+            var sex = document.getElementsByName("sex");
+            out_string += "\n性别:" + (sex[0].checked ? "男" : "女");
+
+            var province = document.getElementById("province");
+            var city = document.getElementById("city");
+            out_string += "\n籍贯(省):" + city.options[city.selectedIndex].text;
+            out_string += " 籍贯(市):" + city.options[city.selectedIndex].text;
+
+            out_string += "\nEmail:" + inputs[3].value;
+            out_string += "\n手机号:" + inputs[4].value;
+
+            var major = document.getElementById("major");
+            out_string += "\n专业擅长:";
+            for (var i = 0; i < major.length; i++) {
+                if (major.options[i].selected)
+                    out_string += major.options[i].text + ",";
+            }
+            out_string = out_string.substr(0, out_string.length - 1);
+
+            var hobby = document.getElementsByName("hobby");
+            out_string += "\n爱好:";
+            for (var i = 0; i < hobby.length; i++) {
+                if (hobby[i].checked)
+                    out_string += hobby[i].value + ",";
+            }
+            out_string = out_string.substr(0, out_string.length - 1);
+
+            out_string += "\n照片:" + document.getElementById("picture").value;
+
+            out_string += "\n出生年月:" + inputs[5].value;
+            out_string += "\n备注信息:" + inputs[6].value;
+
+            alert(out_string);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h1 style="color: #FF0000;">请输入个人详细信息</h1>
+        <table>
+            <tr>
+                <td>
+                    用户名
+                </td>
+                <td>
+                    <input name="input" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    密码
+                </td>
+                <td>
+                    <input name="input" type="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    确认密码
+                </td>
+                <td>
+                    <input name="input" type="password" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    性别
+                </td>
+                <td>
+                    <input name="sex" type="radio" checked="checked" />男
+                    <input name="sex" type="radio" />女
+                </td>
+            </tr>
+            <tr>
+                <td>籍贯</td>
+                <td>
+                    <select id="province" onchange="selectcity(this)">
+                        <option>请选择省份</option>
+                        <option>广东省</option>
+                        <option>湖北省</option>
+                        <option>湖南省</option>
+                    </select>省
+                    &nbsp;
+                    <select id="city">
+                        <option>请选择城市</option>
+
+                    </select>市
+                </td>
+
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input id="email" name="input" type="text" onfocus="inputtip(this,'如wustzz@163.com')" onblur="inputtip2(this,'如wustzz@163.com')" />
+                    <script type="text/javascript">
+                        document.getElementById("email").value = "如wustzz@163.com";
+                        document.getElementById("email").style.color = "#999";
+                        document.getElementById("email").style.fontStyle = "italic";
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td>
+                    <input id="phonenum" name="input" type="text" onfocus="inputtip(this,'11位,全数字')" onblur="inputtip2(this,'11位,全数字')" onkeypress="return isNumbers(event)" />
+                    <script type="text/javascript">
+                        document.getElementById("phonenum").value = "11位,全数字";
+                        document.getElementById("phonenum").style.color = "#999";
+                        document.getElementById("phonenum").style.fontStyle = "italic";
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td>专业擅长</td>
+                <td>
+                    <select multiple="multiple" id="major">
+                        <option>Window编程</option>
+                        <option>单片机编程</option>
+                        <option>ASP.NET编程</option>
+                        <option>J2EE编程</option>
+                        <option>Java编程</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>业余爱好</td>
+                <td>
+                    <input name="hobby" type="checkbox" value="足球" />足球
+                    <input name="hobby" type="checkbox" value="篮球" />篮球
+                    <input name="hobby" type="checkbox" value="排球" />排球
+                    <input name="hobby" type="checkbox" value="唱歌" />唱歌
+                    <input name="hobby" type="checkbox" value="其他" />其他
+                </td>
+            </tr>
+            <tr>
+                <td>个人照片</td>
+                <td>
+                    <input id="picture" type="file" />
+                </td>
+            </tr>
+            <tr>
+                <td>出生年月</td>
+                <td>
+                    <input id="Text1" name="input" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>备注信息</td>
+                <td>
+                    <textarea id="TextArea1" name="input" cols="20" rows="5" onfocus="inputtip(this,'可以补充一下')" onblur="inputtip2(this,'可以补充一下')"></textarea>
+                    <script type="text/javascript">
+                        document.getElementById("TextArea1").value = "可以补充一下";
+                        document.getElementById("TextArea1").style.color = "#999";
+                        document.getElementById("TextArea1").style.fontStyle = "italic";
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input id="Button1" type="button" value="提交" onclick="commit()" />
+                    <input id="Button2" type="button" value="重置" onclick="flash()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+
