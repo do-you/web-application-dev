@@ -28,7 +28,7 @@
                     <td>
                         <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="不能为空" ControlToValidate="password"></asp:RequiredFieldValidator>
-
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="字符不能包含'$'和'\'"  ControlToValidate="password" OnServerValidate="password_validate"></asp:CustomValidator>
                     </td>
                 </tr>
                 <tr>
