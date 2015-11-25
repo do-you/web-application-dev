@@ -15,7 +15,6 @@
             <asp:Button ID="Button1" runat="server" Text="计算" OnClick="Button1_Click" />
             <br />
             <asp:Label ID="Label1" runat="server" Text="MAX:"></asp:Label>
-
             <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
             <br />
             <asp:Label ID="Label2" runat="server" Text="MIN:"></asp:Label>

@@ -15,7 +15,7 @@ namespace 实验2_3
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
-            String[] array = TextBox1.Text.Split(',');
+            string[] array = TextBox1.Text.Split(',');
             for (int i = 1; i < array.Length; i++)
             {
                 for (int j = array.Length - 1; j >= i; j--)
@@ -24,7 +24,7 @@ namespace 实验2_3
                     int b = int.Parse(array[j]);
                     if (a > b)
                     {
-                        String c = array[j - 1];
+                        string c = array[j - 1];
                         array[j - 1] = array[j];
                         array[j] = c;
                     }

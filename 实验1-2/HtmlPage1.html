@@ -26,12 +26,12 @@
                     city.add(new Option("衡阳", "衡阳", false, false), null);
                     break;
             }
-
         }
         function inputtip(input, text) {
             if (input.value == text) {
                 input.value = "";
                 input.style.color = "#000000";
+                input.style.fontStyle = "normal";
             }
         }
         function inputtip2(input, text) {
@@ -70,7 +70,7 @@
 
             var province = document.getElementById("province");
             var city = document.getElementById("city");
-            out_string += "\n籍贯(省):" + city.options[city.selectedIndex].text;
+            out_string += "\n籍贯(省):" + province.options[province.selectedIndex].text;
             out_string += " 籍贯(市):" + city.options[city.selectedIndex].text;
 
             out_string += "\nEmail:" + inputs[3].value;
@@ -233,5 +233,3 @@
     </div>
 </body>
 </html>
-
-
