@@ -12,7 +12,7 @@ namespace 实验4_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            UnobtrusiveValidationMode = UnobtrusiveValidationMode.None;
         }
         protected void province_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -42,5 +42,10 @@ namespace 实验4_1
                 args.IsValid = true;
         }
 
+        protected void on_submit(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+                Response.Redirect("~/WebForm2.aspx");
+        }
     }
 }

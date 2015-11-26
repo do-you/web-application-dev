@@ -28,7 +28,7 @@
                     <td>
                         <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="不能为空" ControlToValidate="password"></asp:RequiredFieldValidator>
-                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="字符不能包含'$'和'\'"  ControlToValidate="password" OnServerValidate="password_validate"></asp:CustomValidator>
+                        <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="字符不能包含'$'和'\'" ControlToValidate="password" OnServerValidate="password_validate"></asp:CustomValidator>
                     </td>
                 </tr>
                 <tr>
@@ -57,16 +57,21 @@
                         <asp:Label ID="Label5" runat="server" Text="籍贯"></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="province" runat="server" OnSelectedIndexChanged="province_SelectedIndexChanged" AutoPostBack="True">
-                            <asp:ListItem>广东省</asp:ListItem>
-                            <asp:ListItem>湖北省</asp:ListItem>
-                            <asp:ListItem>湖南省</asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:DropDownList ID="city" runat="server">
-                            <asp:ListItem>广西</asp:ListItem>
-                            <asp:ListItem>江门</asp:ListItem>
-                            <asp:ListItem>广州</asp:ListItem>
-                        </asp:DropDownList>
+                        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="province" runat="server" OnSelectedIndexChanged="province_SelectedIndexChanged" AutoPostBack="True">
+                                    <asp:ListItem>广东省</asp:ListItem>
+                                    <asp:ListItem>湖北省</asp:ListItem>
+                                    <asp:ListItem>湖南省</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:DropDownList ID="city" runat="server">
+                                    <asp:ListItem>广西</asp:ListItem>
+                                    <asp:ListItem>江门</asp:ListItem>
+                                    <asp:ListItem>广州</asp:ListItem>
+                                </asp:DropDownList>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +147,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="提交" PostBackUrl="~/WebForm2.aspx" />
+                        <asp:Button ID="Button1" runat="server" Text="提交" OnClick="on_submit" />
                         <input id="Reset1" type="reset" value="reset" />
                     </td>
                 </tr>
