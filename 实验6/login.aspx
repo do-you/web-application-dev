@@ -20,7 +20,7 @@
                 <tr>
                     <td style="text-align: right">密码</td>
                     <td>
-                        <asp:TextBox ID="pas" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="pas" runat="server" TextMode="Password"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -33,8 +33,8 @@
                     <td>
                         <asp:Button ID="Button1" runat="server" Text="登陆" OnClick="Button1_Click" />
                         &nbsp;&nbsp;
-                        <asp:Button ID="Button2" runat="server" Text="注册" />
-                    </td>
+                        <asp:Button ID="Button2" runat="server" Text="注册" OnClick="Button2_Click" />
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>

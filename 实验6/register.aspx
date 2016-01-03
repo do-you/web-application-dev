@@ -6,19 +6,25 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+<%--    <style type="text/css">
+        .auto-style1 {
+            height: 25px;
+        }
+    </style>--%>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-            <table style="width: 100%;">
+            <table>
                 <tr>
-                    <td>
+                    <td class="auto-style1">
                         <asp:Label ID="Label1" runat="server" Text="用户名"></asp:Label>
                     </td>
-                    <td>
+                    <td class="auto-style1">
                         <asp:TextBox ID="username" runat="server"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="不能为空" ControlToValidate="username"></asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="6~18个字符，包括字母、数字、下划线，以字母开头，字母或数字结尾" ControlToValidate="username" ValidationExpression="^[a-zA-Z]\w{4,16}([a-zA-Z]|\d)$"></asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="不能为空" ControlToValidate="username" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="6~18个字符，包括字母、数字、下划线，以字母开头，字母或数字结尾" ControlToValidate="username" ValidationExpression="^[a-zA-Z]\w{4,16}([a-zA-Z]|\d)$" Display="Dynamic"></asp:RegularExpressionValidator>
+                        <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="用户名已存在" OnServerValidate="CustomValidator2_ServerValidate" Display="Dynamic"></asp:CustomValidator>
                     </td>
                 </tr>
                 <tr>
@@ -29,6 +35,12 @@
                         <asp:TextBox ID="password" runat="server" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="不能为空" ControlToValidate="password"></asp:RequiredFieldValidator>
                         <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="字符不能包含'$'和'\'" ControlToValidate="password" OnServerValidate="password_validate"></asp:CustomValidator>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\user.mdf;Integrated Security=True" InsertCommand="INSERT INTO [user] (uid, pas) VALUES (@uid, @pas)" ProviderName="System.Data.SqlClient">
+                            <InsertParameters>
+                                <asp:ControlParameter ControlID="username" Name="uid" PropertyName="Text" />
+                                <asp:ControlParameter ControlID="password" Name="pas" PropertyName="Text" />
+                            </InsertParameters>
+                        </asp:SqlDataSource>
                     </td>
                 </tr>
                 <tr>
@@ -111,7 +123,7 @@
                         <asp:Label ID="Label9" runat="server" Text="业余爱好"></asp:Label>
                     </td>
                     <td>
-                       <%-- <asp:CheckBoxList ID="hobby" runat="server" RepeatDirection="Horizontal">
+                        <%-- <asp:CheckBoxList ID="hobby" runat="server" RepeatDirection="Horizontal">
                             <asp:ListItem>足球</asp:ListItem>
                             <asp:ListItem>篮球</asp:ListItem>
                             <asp:ListItem>排球</asp:ListItem>
@@ -135,7 +147,10 @@
                         <asp:Label ID="Label10" runat="server" Text="个人照片"></asp:Label>
                     </td>
                     <td>
+                        <asp:Image ID="Image1" runat="server" />
                         <asp:FileUpload ID="picture" runat="server" />
+                        &nbsp;
+                        <asp:Button ID="Button2" runat="server" Text="上传" OnClick="Button2_Click" />
                     </td>
                 </tr>
                 <tr>

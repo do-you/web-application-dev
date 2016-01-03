@@ -19,7 +19,8 @@ namespace 实验6
         }
         protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\web\web实验\实验6\App_Data\user.mdf;Integrated Security=True";
+            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\user.mdf;Integrated Security=True";
+
             SqlConnection conn = new SqlConnection(connStr);
             conn.Open();
             SqlCommand cmd = new SqlCommand("select count(*) from [user] where uid=@uid and pas=@pas", conn);
@@ -33,6 +34,11 @@ namespace 实验6
             {
                 args.IsValid = false;
             }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/register.aspx");
         }
     }
 }

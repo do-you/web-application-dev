@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -45,7 +47,37 @@ namespace 实验6
         protected void on_submit(object sender, EventArgs e)
         {
             if (Page.IsValid)
-                Response.Redirect("~/WebForm2.aspx");
+            {
+                SqlDataSource1.Insert();
+                Response.AddHeader("refresh", "2;url=login.aspx");
+            }
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            string path = Server.MapPath("~");
+            if (Request.Files["picture"].ContentLength != 0)
+            {
+                Request.Files["picture"].SaveAs(path + "\\" + Request.Files["picture"].FileName);
+                Image1.ImageUrl = "~/" + Request.Files["picture"].FileName;
+            }
+        }
+
+        protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string connStr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\web\web实验\实验6\App_Data\user.mdf;Integrated Security=True";
+            SqlConnection conn = new SqlConnection(connStr);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select count(*) from [user] where uid=@uid", conn);
+            cmd.Parameters.Add("@uid", SqlDbType.Char);
+            cmd.Parameters[0].Value = username.Text;
+            int count = (int)cmd.ExecuteScalar();  //返回结果集中第一行的第一列（常用于检索单个值，例如记录个数）
+            conn.Close();
+            if (count > 0)
+            {
+                args.IsValid = false;
+            }
+
         }
     }
 }
