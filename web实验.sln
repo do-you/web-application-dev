@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "实验1-1", "实验1-1\实验1-1.csproj", "{E5B6C5AF-5564-45B9-899D-4A165F8E66D8}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "实验5-1", "实验5-1\实验5-1.csproj", "{BFA221C9-4BB9-4FD3-8F6A-21BA56CC370D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "实验6", "实验6\实验6.csproj", "{1534B720-2F72-4136-8061-88FCC0DE7A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "online_album", "online_album\online_album.csproj", "{0B4089C7-8EDD-49D2-A2F0-2A7A8D507DFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{1534B720-2F72-4136-8061-88FCC0DE7A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1534B720-2F72-4136-8061-88FCC0DE7A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1534B720-2F72-4136-8061-88FCC0DE7A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4089C7-8EDD-49D2-A2F0-2A7A8D507DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4089C7-8EDD-49D2-A2F0-2A7A8D507DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4089C7-8EDD-49D2-A2F0-2A7A8D507DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4089C7-8EDD-49D2-A2F0-2A7A8D507DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
